@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="ui sortable celled table">
+    <thead>
+        <tr>
+            <th>Random Numbers</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Items)
+        {
+            <tr>
+                <td>@item</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $('table').tablesort();
+
+    $('thead th.date').data('sortBy', function (th, td, tablesort) {
+        return new Date(td.text());
+    });
+</script>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/semantic")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="ui top small menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a class="item">Features</a>
+                <a class="item">Testimonials</a>
+                <a class="item">Sign-in</a>
+            </div>
+        </div>
+    </div>
+    <div class="main container">
+        @RenderBody()
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
