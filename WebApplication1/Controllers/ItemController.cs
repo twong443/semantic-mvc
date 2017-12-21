@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -11,14 +12,14 @@ namespace WebApplication1.Controllers
         // GET: Item
         public ActionResult Index()
         {
-            var random = new Random(999);
+            var itemList = new ItemList { Title = "Item Things!" };
 
-            var items = new List<string>();
+            var random = new Random();
+
             for (int i = 1; i < 50; ++i)
-                items.Add($"{random.Next()}");
+                itemList.Items.Add(new Item { Id = i, Name = $"Item {random.Next()}", Created = DateTime.Today.AddDays(i).Date });
 
-            ViewBag.Items = items;
-            return View();
+            return View(itemList);
         }   
     }       
 }           

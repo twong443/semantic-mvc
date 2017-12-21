@@ -1,21 +1,22 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model WebApplication1.Models.ItemList
 
-<h2>Index</h2>
+<h2>@Model.Title</h2>
 
 <table class="ui sortable celled table">
     <thead>
         <tr>
-            <th>Random Numbers</th>
+            <th class="integer">Id</th>
+            <th>Name</th>
+            <th class="date">Created</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in ViewBag.Items)
+        @foreach (var item in Model.Items)
         {
             <tr>
-                <td>@item</td>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@String.Format("{0:M/d/yyyy}", item.Created)</td>
             </tr>
         }
     </tbody>
@@ -26,5 +27,9 @@
 
     $('thead th.date').data('sortBy', function (th, td, tablesort) {
         return new Date(td.text());
+    });
+
+    $('thead th.integer').data('sortBy', function (th, td, tablesort) {
+        return parseInt(td.text());
     });
 </script>
